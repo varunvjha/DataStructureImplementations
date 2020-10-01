@@ -50,7 +50,6 @@ public class ArrayStack{
         System.out.println("Welcome to the Data Structure of Stack");
         System.out.println("Enter the size of array");
         int n=sc.nextInt();
-        int array[]=new int[n];
         stack_imp sti=new stack_imp(n);
         while(true){
             System.out.println("Options---->");
