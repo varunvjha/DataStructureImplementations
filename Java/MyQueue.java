@@ -1,5 +1,5 @@
 
-public class myQueue<E>
+public class MyQueue<E>
 {
 	Node<E> head,rear;
 	public void enqueue(E e)
