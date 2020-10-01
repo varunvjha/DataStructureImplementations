@@ -33,7 +33,7 @@ class stack_imp{
         else{   
             System.out.println(array[index-1]);
         }
-        
+
     }
     public void print(){
         System.out.println("Printing the Stack---");
@@ -41,10 +41,10 @@ class stack_imp{
             System.out.println(array[i]);
         }
     }
-    
+
 
 }
-public class stack{
+public class ArrayStack{
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         System.out.println("Welcome to the Data Structure of Stack");
@@ -65,12 +65,14 @@ public class stack{
                     System.out.println("Enter the value to insert");
                     int a=sc.nextInt();
                     sti.insert(a);
+                    count++;
                     sti.print();
                     break;
                 case 2:
                     System.out.println("Deleting the top Element");
                     sti.delete();
                     sti.print();
+                    count--;
                     break;
                 case 3:
                     System.out.println("The top element is ->");
@@ -80,9 +82,9 @@ public class stack{
                     System.out.println("Your Stack is");
                     sti.print();
                     break;
-                    
+
                 default:
-                    break;
+                	System.out.println("Invalid Choice");
             }
             if(choice==5){
                 System.out.println("Thank You");
