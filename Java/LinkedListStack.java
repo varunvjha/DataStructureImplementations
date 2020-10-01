@@ -87,12 +87,7 @@ public class LinkedListStack {
 		//	Taking an Integer Stack here
 		MyStack<Integer> stack = new MyStack<Integer>();
 		while(true){
-        	System.out.println("Options---->");
-        	System.out.println("1. Push");
-        	System.out.println("2. Pop");
-        	System.out.println("3. Peek");
-        	System.out.println("4. Display");
-        	System.out.println("5. Terminate this stack");
+        	System.out.println("Options---->\n1. Push\n2. Pop\n3. Peek\n4. Display\n5. Terminate this stack");
         	int choice=in.nextInt();
         	switch (choice) {
             	case 1:
@@ -102,8 +97,7 @@ public class LinkedListStack {
                 	stack.display();
                 	break;
             	case 2:
-                	System.out.println("Deleting the top Element");
-                	System.out.println("Popped Element " + stack.pop());
+                	System.out.println("Deleting the top Element\nPopped Element " + stack.pop());
                 	stack.display();
                 	break;
             	case 3:
