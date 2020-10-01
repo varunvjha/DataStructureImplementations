@@ -65,14 +65,12 @@ public class ArrayStack{
                     System.out.println("Enter the value to insert");
                     int a=sc.nextInt();
                     sti.insert(a);
-                    count++;
                     sti.print();
                     break;
                 case 2:
                     System.out.println("Deleting the top Element");
                     sti.delete();
                     sti.print();
-                    count--;
                     break;
                 case 3:
                     System.out.println("The top element is ->");
