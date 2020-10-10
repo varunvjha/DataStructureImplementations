@@ -15,12 +15,12 @@ So lets get started....
 
 ✏ Clone the repository.
 ```
-~ $ git clone 
+~ $ git clone https://github.com/varunvjha/DataStructureImplementations.git
 ```
 
-✏ Create a folder where you want to store the project on your desktop.
+✏ Create a folder where you want to store the repo on your desktop.
 
-✏ Now you can make change in the templates by opening in your favourite text editor.
+✏ Now you can implement data structure by opening in your favourite text editor.
 
 ✏ After making changes in your repo now you have to push it
 
