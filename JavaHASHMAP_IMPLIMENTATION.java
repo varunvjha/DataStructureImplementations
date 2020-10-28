@@ -7,9 +7,10 @@ import java.util.*;
 
 public class Main {
 
-  public static class HashMap<K, V>  // GENERIC SUPPORT
+  public static class HashMap<K, V>  // GENERIC SUPPORT as int can various keys and set.
   {
-    private class HMNode {
+    private class HMNode {      // HMNode class for assigning key and values to the hashmap. as we know that class is a primitive data type so we can modifie the type of 
+                                // the type of data structure we wanted on our own.
       K key;
       V value;
 
@@ -19,11 +20,12 @@ public class Main {
       }
     }
 
-    private int size; // n
-    private LinkedList<HMNode>[] buckets; // N = buckets.length
+    private int size;                                            // this will give the size of the hashmap.
+    private LinkedList<HMNode>[] buckets;                        // N = buckets.length, created an array of linkedlist
+                                                                 // basic implimentation of hash table.
 
     public HashMap() {
-      initbuckets(4);
+      initbuckets(4);                // intitiallizing the size of the array
       size = 0;
     }
 
@@ -34,24 +36,25 @@ public class Main {
       }
     }
 
-    public void put(K key, V value) throws Exception  // HASHMAP.PUT() FUNCTION
+    public void put(K key, V value) throws Exception     // HASHMAP.PUT() FUNCTION
     {
-     int bi=hashfn(key);
-    int di=getindex(key,bi);
+     int bi=hashfn(key);        // finding the index of the key in the hashtable
+    int di=getindex(key,bi);    // finding the indix in the lenkedlist of index bi of thr array
     if(di!=-1)
     {
-      HMNode node= bucket[bi].get(di);
+      HMNode node= bucket[bi].get(di);  // alter the value of the key if present in the linkedlist
       node.value=value;
     }
     else{
-        HMNode node=new HMNode(key,value);
+        HMNode node=new HMNode(key,value);   // else create a new node
         bucket[bi].add(node);
     size++;
     }
     double loadf=(size*1.0)/bucket.length;   // LOAD FACTOR FROM THE IMPLIMENTATION OF HASH TABLE
     if(loadf>2.0) 
     {
-        rehash();
+        rehash();   // rehashing if load factor > 2.0 , this prevent from increasing the size of the linked list beyond the certain value 
+                    // so as to maintain the time complexity within O(1).
     }
 }
     }
@@ -63,10 +66,10 @@ public class Main {
     if(di!=-1)
     {
       HMNode node= bucket[bi].get(di);
-      return node.value;
+      return node.value;                     // if rthe value is present in the bucket , return the key.value
     }
     else{
-       return null;
+       return null;                          // else return null
     }
     }
     
@@ -76,10 +79,10 @@ public class Main {
     int di=getindex(key,bi);
     if(di!=-1)
     {
-     return true;
+     return true;                       // // if rthe value is present in the bucket , return the true
     }
     else{
-       return false;
+       return false;   // else false
     }
     }
     
@@ -97,23 +100,25 @@ public class Main {
     }
     }
 
-    public ArrayList<K> keyset() throws Exception {
-       ArrayList<K> kkeyset=new ArrayList<>();
-    for(int i=0;i<bucket.length;i++)
-    {
+    public ArrayList<K> keyset() throws Exception {     // implimentation of keyset data structure in java
+       ArrayList<K> kkeyset=new ArrayList<>();          // created an arraylist of HMNode.
+    for(int i=0;i<bucket.length;i++)                  // iterate through the bucket array
+    {                                                 // and add key.value to the arraylist
       for(HMNode node:bucket[i])
       {
           kkeyset.add(node.key);
         }
     }
-
-    public int size() {
-     return size;
+      return kkeyset;   // return arrylist containing key.values of each node
     }
 
-   public void display() {
-      System.out.println("Display Begins");
-      for (int bi = 0; bi < buckets.length; bi++) {
+    public int size() {
+     return size;        // size of thr hashmap
+    }
+
+   public void display() {                        // iterating through out the bucket array
+      System.out.println("Display Begins");       // fetching key.value from every node and printing them 
+      for (int bi = 0; bi < buckets.length; bi++) {  // using System.out.print();
         System.out.print("Bucket" + bi + " ");
         for (HMNode node : buckets[bi]) {
           System.out.print( node.key + "@" + node.value + " ");
@@ -122,11 +127,11 @@ public class Main {
       }
       System.out.println("Display Ends");
   }
-private static void rehash()
-{
-    LinkedList<HMNode> oba[]=bucket;
+private static void rehash()    // if the the size of the linked list become greater then load factor
+{                              //  just double the size of the array 
+    LinkedList<HMNode> oba[]=bucket;          // as load factor is  size of hashmap / bucket length
     initbuckets(oba.length*2);
-  for(int i=0;i<bucket.length;i++)
+  for(int i=0;i<bucket.length;i++)          // so by increasing the length of bucket the load factor become less then 2 again.
     {
       for(HMNode node:bucket[i])
       {
@@ -134,10 +139,10 @@ private static void rehash()
         }
     }
 }
-private static int hashfn(K keys)
+private static int hashfn(K keys)  // hash function from the basic implimentation of hashtable
 {
     int hc=key.hashcode();
-    return (Math.abs(hc)%bucket.length);
+    return (Math.abs(hc)%bucket.length);  // hash function will give the index of the key using the hash code
 }
 private static int getindex(K key, int bi)
 {
