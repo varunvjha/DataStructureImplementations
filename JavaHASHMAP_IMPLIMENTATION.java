@@ -7,9 +7,9 @@ import java.util.*;
 
 public class Main {
 
-  public static class HashMap<K, V>  // GENERIC SUPPORT as int can various keys and set.
+  public static class HashMap<K, V>  // GENERIC SUPPORT
   {
-    private class HMNode {      // HMNode class for assigning key and values to the hashmap. as we know that class is a primitive data type so we can modifie the type of 
+    private class HMNode {      // HMNode class for assigning key and values to the hashmap. as we know that class is a primitive data type so we can modify 
                                 // the type of data structure we wanted on our own.
       K key;
       V value;
@@ -22,10 +22,10 @@ public class Main {
 
     private int size;                                            // this will give the size of the hashmap.
     private LinkedList<HMNode>[] buckets;                        // N = buckets.length, created an array of linkedlist
-                                                                 // basic implimentation of hash table.
+                                                                 // basic implementation of hash table.
 
     public HashMap() {
-      initbuckets(4);                // intitiallizing the size of the array
+      initbuckets(4);                // initializing the size of the array
       size = 0;
     }
 
@@ -39,7 +39,7 @@ public class Main {
     public void put(K key, V value) throws Exception     // HASHMAP.PUT() FUNCTION
     {
      int bi=hashfn(key);        // finding the index of the key in the hashtable
-    int di=getindex(key,bi);    // finding the indix in the lenkedlist of index bi of thr array
+    int di=getindex(key,bi);    // finding the index in the linkedlist of index bi of the array
     if(di!=-1)
     {
       HMNode node= bucket[bi].get(di);  // alter the value of the key if present in the linkedlist
@@ -50,7 +50,7 @@ public class Main {
         bucket[bi].add(node);
     size++;
     }
-    double loadf=(size*1.0)/bucket.length;   // LOAD FACTOR FROM THE IMPLIMENTATION OF HASH TABLE
+    double loadf=(size*1.0)/bucket.length;   // LOAD FACTOR FROM THE IMPLEMENTATION OF HASH TABLE
     if(loadf>2.0) 
     {
         rehash();   // rehashing if load factor > 2.0 , this prevent from increasing the size of the linked list beyond the certain value 
@@ -66,7 +66,7 @@ public class Main {
     if(di!=-1)
     {
       HMNode node= bucket[bi].get(di);
-      return node.value;                     // if rthe value is present in the bucket , return the key.value
+      return node.value;                     // if the value is present in the bucket , return the key.value
     }
     else{
        return null;                          // else return null
@@ -79,7 +79,7 @@ public class Main {
     int di=getindex(key,bi);
     if(di!=-1)
     {
-     return true;                       // // if rthe value is present in the bucket , return the true
+     return true;                       // // if the value is present in the bucket , return true
     }
     else{
        return false;   // else false
@@ -100,7 +100,7 @@ public class Main {
     }
     }
 
-    public ArrayList<K> keyset() throws Exception {     // implimentation of keyset data structure in java
+    public ArrayList<K> keyset() throws Exception {     // implementation of keyset data structure in java
        ArrayList<K> kkeyset=new ArrayList<>();          // created an arraylist of HMNode.
     for(int i=0;i<bucket.length;i++)                  // iterate through the bucket array
     {                                                 // and add key.value to the arraylist
@@ -113,7 +113,7 @@ public class Main {
     }
 
     public int size() {
-     return size;        // size of thr hashmap
+     return size;        // size of the hashmap
     }
 
    public void display() {                        // iterating through out the bucket array
@@ -127,11 +127,11 @@ public class Main {
       }
       System.out.println("Display Ends");
   }
-private static void rehash()    // if the the size of the linked list become greater then load factor
-{                              //  just double the size of the array 
-    LinkedList<HMNode> oba[]=bucket;          // as load factor is  size of hashmap / bucket length
+private static void rehash()    // if the size of the linked list becomes greater then load factor
+{                              //  just doubles the size of the array 
+    LinkedList<HMNode> oba[]=bucket;          // as load factor is size of hashmap / bucket length
     initbuckets(oba.length*2);
-  for(int i=0;i<bucket.length;i++)          // so by increasing the length of bucket the load factor become less then 2 again.
+  for(int i=0;i<bucket.length;i++)          // so by increasing the length of bucket the load factor become less than 2 again.
     {
       for(HMNode node:bucket[i])
       {
@@ -139,7 +139,7 @@ private static void rehash()    // if the the size of the linked list become gre
         }
     }
 }
-private static int hashfn(K keys)  // hash function from the basic implimentation of hashtable
+private static int hashfn(K keys)  // hash function from the basic implementation of hashtable
 {
     int hc=key.hashcode();
     return (Math.abs(hc)%bucket.length);  // hash function will give the index of the key using the hash code
